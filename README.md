@@ -9,5 +9,9 @@
 5. 提供了便捷的字幕编辑与修改功能。
 6. 提供了谷歌翻译字幕的功能
 
+## 安装
+
+- [Chrome](https://chromewebstore.google.com/detail/external-subtitle/peiaajeeocehgpbdbljhjenlikfkokdm?hl=zh-CN&utm_source=ext_sidebar)
+
 ## 反馈问题
 - 在 [issue](https://github.com/keyboard3/external-subtitle/issues) 板块反馈使用问题
