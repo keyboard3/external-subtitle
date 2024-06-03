@@ -15,3 +15,4 @@
 
 ## 反馈问题
 - 在 [issue](https://github.com/keyboard3/external-subtitle/issues) 板块反馈使用问题
+- [telegram 交流群](https://t.me/+qyr0ziZhRBs0Njk9)
