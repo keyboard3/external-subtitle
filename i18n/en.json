@@ -1,0 +1,27 @@
+{
+    "setting": "Settings",
+    "video": "Local Video",
+    "lngSetting": "Language Settings",
+    "enable": "Enable",
+    "applyVideo": "Mount Subtitles",
+    "applyVideoTip": "Mount current subtitles to the currently playing video",
+    "stopApply": "Unmount",
+    "crawlVideoSubtitle": "Fetch Subtitles",
+    "crawlVideoSubtitleTip": "Fetch subtitles currently displayed in the video",
+    "stopCrawl": "Stop Fetching",
+    "translate": "Translate",
+    "translateTip": "Google Translate current subtitles",
+    "stopTranslate": "Stop Translation",
+    "crawlBegin": "Detecting subtitles...",
+    "crawlFail": "Subtitle detection failed, video not found, please make sure you are on the video detail page",
+    "downloadTip": "Download current subtitles",
+    "uploadTip": "Upload local subtitle file",
+    "applySuccess": "Subtitles applied successfully",
+    "applyFailed": "Video not found, please make sure you are on the video detail page",
+    "uploadSubs": "Upload Subtitles",
+    "lng": {
+        "en": "English",
+        "zh": "Chinese",
+        "zh-TW": "Traditional Chinese"
+    }
+}

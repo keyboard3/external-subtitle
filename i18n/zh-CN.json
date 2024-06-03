@@ -1,0 +1,27 @@
+{
+    "setting": "设置",
+    "video": "本地视频",
+    "lngSetting": "语言设置",
+    "enable": "启用",
+    "applyVideo": "挂载字幕",
+    "applyVideoTip": "挂载当前字幕到当前播放的视频中",
+    "stopApply": "取消挂载",
+    "crawlVideoSubtitle": "抓取字幕",
+    "crawlVideoSubtitleTip": "抓取视频中正在显示字幕",
+    "stopCrawl": "停止抓取",
+    "translate": "翻译",
+    "translateTip": "谷歌翻译当前字幕",
+    "stopTranslate": "停止翻译",
+    "crawlBegin": "探测字幕中...",
+    "crawlFail": "探测字幕失败，未找到视频，请确保进入视频详情页",
+    "downloadTip": "下载当前字幕",
+    "uploadTip": "上传本地字幕文件",
+    "applySuccess": "应用字幕成功",
+    "applyFailed": "未找到视频，请确保进入视频详情页",
+    "uploadSubs": "上传字幕",
+    "lng": {
+        "en": "英文",
+        "zh": "中文",
+        "zh-TW": "繁体中文"
+    }
+}
