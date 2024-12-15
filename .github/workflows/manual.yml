@@ -1,0 +1,33 @@
+name: Manual release
+on:
+  workflow_dispatch:
+    inputs:
+      chrome:
+        default: "0"
+        description: "is publish to chrome"
+        type: string
+        required: false
+      branch:
+        default: "master"
+        description: "branch name"
+        type: string
+        required: false
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    concurrency: manual-build
+    if: github.event.inputs.chrome == '1'
+    steps:
+      - uses: actions/checkout@v4
+      - run: npm install
+      - run: npm run build
+      - run: make zipstore
+      - name: Upload & release to chrome store
+        uses: mnao305/chrome-extension-upload@v4.0.1
+        if: github.event.inputs.chrome == '1'
+        with:
+          file-path: dist/chrome.zip
+          extension-id: peiaajeeocehgpbdbljhjenlikfkokdm
+          client-id: ${{ secrets.GOOGLE_CLIENT_ID }}
+          client-secret: ${{ secrets.GOOGLE_CLIENT_SECRET }}
+          refresh-token: ${{ secrets.GOOGLE_REFRESH_TOKEN }}
