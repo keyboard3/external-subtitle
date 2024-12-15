@@ -1,0 +1,95 @@
+.panel {
+  position: fixed;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  z-index: 999999;
+
+  --panel-width: 350px;
+}
+
+.panel-content {
+  /* panel 下才有的样式 */
+  /* border: 1px solid rgb(208, 215, 222); */
+  height: 99vh;
+  width: var(--panel-width);
+  background-color: white;
+}
+
+.panel-subs {
+  -ms-overflow-style: none; /* IE和Edge */
+  scrollbar-width: none; /* Firefox */
+  @apply flex flex-col overflow-x-hidden overflow-y-auto h-full;
+  @apply mt-3 pl-0 mx-4 pt-2;
+  @apply border-[1px] border-solid rounded-md  border-gray-300;
+}
+
+.panel-subs::-webkit-scrollbar {
+  display: none;
+}
+
+.panel-subs > li {
+  line-height: 16px;
+  @apply text-xs flex flex-row;
+}
+.panel-subs > li:first-child {
+  border-width: 0;
+}
+
+.time-range {
+  user-select: none;
+  width: 60px;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: hsla(215, 28%, 17%, 0.8);
+  margin-left: 10px;
+}
+
+.time-range:hover {
+  color: #1677ff;
+}
+
+.text-active {
+  color: #1677ff !important;
+}
+
+.subs-item {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.caption-wrapper {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.caption-text {
+  @apply text-left ml-0 my-1 mr-2 flex-1 whitespace-pre-line;
+  color: rgb(31, 41, 55);
+  outline: none !important;
+  font-weight: 500;
+}
+
+.actions {
+  @apply mx-4 mt-3;
+}
+
+.header {
+  @apply mx-4 mt-3;
+}
+
+.tabs {
+  @apply mx-4 mt-2;
+}
+
+:global(.ant-tabs),
+:global(.ant-tabs-content-holder),
+:global(.ant-tabs-content),
+:global(.ant-tabs-tabpane) {
+  height: 100%;
+}

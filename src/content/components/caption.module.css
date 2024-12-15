@@ -1,0 +1,25 @@
+.caption-container {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  top: 0;
+  pointer-events: none;
+  z-index: 2147483647;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.captions-text {
+  bottom: 20px;
+  background-color: rgba(8, 8, 8, 0.75);
+  color: white;
+  border-radius: 6px;
+  text-align: center;
+  white-space: pre-wrap;
+  margin-bottom: 9%;
+  padding: 10px;
+  line-height: 1.5;
+}

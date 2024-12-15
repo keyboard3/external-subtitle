@@ -1,0 +1,169 @@
+[
+    {
+        "id": "default",
+        "enable": true,
+        "match": "*",
+        "likeCaptionSelectors": [
+            ".vjs-text-track-display",
+            "[class*=\"caption\"]",
+            "[id*=\"caption\"]"
+        ],
+        "langSort": [
+            "en",
+            "zh-CN",
+            "zh-TW"
+        ],
+        "translationService": "bing"
+    },
+    {
+        "id": "bilibli",
+        "enable": true,
+        "match": [
+            "https://www.bilibili.com/"
+        ],
+        "subtitleHook": {
+            "subRegex": "aisubtitle.hdslb.com/bfs/ai_subtitle",
+            "itemPath": "body",
+            "startKey": "from",
+            "endKey": "to",
+            "textKey": "content"
+        }
+    },
+    {
+        "id": "youtube",
+        "enable": true,
+        "match": [
+            "https://www.youtube.com/",
+            "https://m.youtube.com/"
+        ],
+        "captionWrapperSelector": ".caption-window:last-child",
+        "ytAsrConfig": {
+            "base": {
+                "isSpaceLang": false,
+                "splitConfig": {
+                    "minInterval": 1000,
+                    "maxWords": 17
+                },
+                "mergeConfig": {
+                    "minInterval": 1500,
+                    "maxWords": 19
+                }
+            },
+            "en": {
+                "isSpaceLang": true,
+                "wordsRegex": "etc\\.|Mr\\.|Mrs\\.|Ms\\.|Dr\\.|Prof\\.|Sr\\.|Jr\\.|U\\.S\\.|U\\.K\\.|Co\\.|Inc\\.|Ltd\\.|St\\.|p\\.a\\.|\\d+\\.",
+                "splitConfig": {
+                    "symbolBreakWords": [
+                        "mhm",
+                        "um",
+                        ">>",
+                        "- "
+                    ],
+                    "breakMiniTime": 400,
+                    "breakWords": [
+                        "mhm",
+                        "um",
+                        ">>",
+                        "- ",
+                        "in fact",
+                        "such as",
+                        "or even",
+                        "get me",
+                        "well i'm",
+                        "i didn't",
+                        "i know",
+                        "i need",
+                        "i will",
+                        "i'll",
+                        "i mean",
+                        "you are",
+                        "what does",
+                        "no problem",
+                        "as we",
+                        "if you",
+                        "hello",
+                        "okay",
+                        "oh",
+                        "yep",
+                        "yes",
+                        "hey",
+                        "hi",
+                        "yeah",
+                        "essentially",
+                        "because",
+                        "and",
+                        "but",
+                        "which",
+                        "so",
+                        "where",
+                        "what",
+                        "now",
+                        "or",
+                        "how",
+                        "after"
+                    ],
+                    "skipWords": [
+                        "uh"
+                    ]
+                },
+                "mergeConfig": {
+                    "endWords": [
+                        "in",
+                        "is",
+                        "and",
+                        "are",
+                        "not",
+                        "an",
+                        "a",
+                        "some",
+                        "the",
+                        "but",
+                        "our",
+                        "for",
+                        "of",
+                        "if",
+                        "his",
+                        "her",
+                        "my",
+                        "noticed",
+                        "come",
+                        "mean",
+                        "why",
+                        "this",
+                        "has",
+                        "make",
+                        "gpt",
+                        "p.m",
+                        "a.m"
+                    ],
+                    "startWords": [
+                        "or",
+                        "to",
+                        "in",
+                        "has",
+                        "of",
+                        "are",
+                        "is",
+                        "lines",
+                        "with",
+                        "days",
+                        "years",
+                        "tokens"
+                    ]
+                },
+                "endCompatibleConfigs": [
+                    {
+                        "minInterval": 1000,
+                        "minWordLength": 3,
+                        "sentenceMinWord": 20
+                    },
+                    {
+                        "minInterval": 1500,
+                        "minWordLength": 1,
+                        "sentenceMinWord": 20
+                    }
+                ]
+            }
+        }
+    }
+]

@@ -1,0 +1,28 @@
+{
+    "setting": "設置",
+    "video": "本地影片",
+    "lngSetting": "語言設置",
+    "enable": "啟用",
+    "applyVideo": "掛載字幕",
+    "applyVideoTip": "掛載當前字幕到當前播放的影片中",
+    "stopApply": "取消掛載",
+    "crawlVideoSubtitle": "抓取字幕",
+    "crawlVideoSubtitleTip": "抓取影片中正在顯示字幕",
+    "stopCrawl": "停止抓取",
+    "translate": "翻譯",
+    "translateTip": "谷歌翻譯當前字幕",
+    "stopTranslate": "停止翻譯",
+    "crawlBegin": "探測字幕中...",
+    "crawlFail": "探測字幕失敗，未找到影片，請確保進入影片詳情頁",
+    "downloadTip": "下載當前字幕",
+    "uploadTip": "上傳本地字幕文件",
+    "applySuccess": "應用字幕成功",
+    "applyFailed": "未找到影片，請確保進入影片詳情頁",
+    "uploadSubs": "上傳字幕",
+    "translationService": "翻譯服務",
+    "lng": {
+        "en": "英文",
+        "zh": "中文",
+        "zh-TW": "繁體中文"
+    }
+}

@@ -1,0 +1,52 @@
+{
+  "manifest_version": 3,
+  "name": "External Subtitle",
+  "description": "支持任何视频网站外挂字幕,支持抓取视频字幕,支持提取本地视频字幕",
+  "version": "1.0.17",
+  "action": {
+    "default_icons": {
+      "16": "images/icon-16.png",
+      "32": "images/icon-32.png",
+      "48": "images/icon-48.png",
+      "128": "images/icon-128.png"
+    }
+  },
+  "icons": {
+    "16": "images/icon-16.png",
+    "32": "images/icon-32.png",
+    "48": "images/icon-48.png",
+    "128": "images/icon-128.png"
+  },
+  "permissions": [
+    "storage",
+    "tabs",
+    "sidePanel"
+  ],
+  "content_scripts": [
+    {
+      "js": [
+        "scripts/content.js"
+      ],
+      "matches": [
+        "*://*/*"
+      ],
+      "run_at": "document_start",
+      "all_frames": true
+    }
+  ],
+  "background": {
+    "service_worker": "scripts/background.js"
+  },
+  "web_accessible_resources": [
+    {
+      "resources": [
+        "scripts/inject.js",
+        "css/panel.css",
+        "css/content.css"
+      ],
+      "matches": [
+        "*://*/*"
+      ]
+    }
+  ]
+}
