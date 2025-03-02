@@ -1,6 +1,6 @@
 {
   "name": "external-subtitle",
-  "version": "1.0.16",
+  "version": "1.0.18",
   "description": "external subtitle support external and download subtitle",
   "private": true,
   "scripts": {

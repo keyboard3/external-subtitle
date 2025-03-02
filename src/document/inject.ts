@@ -16,6 +16,7 @@ console.log("inject script running...");
 async function main() {
   setDocumentDomIsReady();
   const config = await getConfig();
+  // console.log("ext-subtitles config", config);
   let subConfig: any;
   if (config.subtitleHook) {
     const hook = config.subtitleHook;
@@ -31,6 +32,7 @@ async function main() {
           return;
         }
         const timeDivisor = hook.timeDivisor || 1;
+        // console.log("ext-subtitles originSubs", originSubs);
         const subtitles: SubtitleCue[] = originSubs.map((item: any) => {
           return {
             start: item[hook.startKey] / timeDivisor,
@@ -38,6 +40,7 @@ async function main() {
             text: item[hook.textKey],
           };
         });
+        // console.log("ext-subtitles subtitles", subtitles);
         toBackUpdateCollectorSubtitles({
           url: location.href,
           subtitles,
@@ -53,6 +56,7 @@ async function main() {
       },
       onResponse: async (ytRes: YoutubeRes, url: string) => {
         const config = await getConfig();
+        // console.log("ext-subtitles ytRes", ytRes);
         const lang = getTargetLang(url);
         let subtitles = formatEventsToSubtitles(
           ytRes.events || [],

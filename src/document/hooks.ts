@@ -24,19 +24,22 @@ export function listenXhrRes(
   }[],
 ) {
   const xhrOpen = XMLHttpRequest.prototype.open;
+  // console.log("ext-subtitles xhrOpen", xhrOpen);
   XMLHttpRequest.prototype.open = function (_, url: string) {
+    // console.log("ext-subtitles xhrOpen", url);
     const filterConfig = filterConfigs.find((config) => config.filter(url));
     if (filterConfig) {
       const xhrSend = this.send;
+      // console.log("ext-subtitles xhrSend", xhrSend);
       this.send = function () {
-        const xhrStateChange = this.onreadystatechange;
-        this.onreadystatechange = function () {
-          const {
-            readyState,
-            responseText,
-          } = this;
-          if (readyState === XMLHttpRequest.DONE && responseText) {
+        // console.log("ext-subtitles xhrSend", this);
+        const xhrOnLoad = this.onload;
+        this.onload = function () {
+          const { responseText } = this;
+          // console.log("ext-subtitles onload", responseText);
+          if (responseText) {
             try {
+              // console.log("ext-subtitles responseText", responseText);
               const res = JSON.parse(responseText);
               filterConfig.onResponse(res, url);
             } catch (e) {
@@ -44,7 +47,7 @@ export function listenXhrRes(
             }
           }
           //@ts-ignore
-          return xhrStateChange?.apply(this, arguments);
+          return xhrOnLoad?.apply(this, arguments);
         };
         //@ts-ignore
         return xhrSend.apply(this, arguments);

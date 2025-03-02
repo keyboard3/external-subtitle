@@ -2,7 +2,7 @@
   "manifest_version": 3,
   "name": "External Subtitle",
   "description": "支持任何视频网站外挂字幕,支持抓取视频字幕,支持提取本地视频字幕",
-  "version": "1.0.17",
+  "version": "1.0.18",
   "action": {
     "default_icons": {
       "16": "images/icon-16.png",
