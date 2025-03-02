@@ -4,25 +4,53 @@ on:
     inputs:
       chrome:
         default: "0"
-        description: "is publish to chrome"
+        description: "Publish to Chrome Web Store"
+        type: string
+        required: false
+      firefox:
+        default: "0"
+        description: "Publish to Firefox Add-ons Store"
         type: string
         required: false
       branch:
         default: "master"
-        description: "branch name"
+        description: "Branch name"
         type: string
         required: false
 jobs:
   build:
     runs-on: ubuntu-latest
     concurrency: manual-build
-    if: github.event.inputs.chrome == '1'
+    if: github.event.inputs.chrome == '1' || github.event.inputs.firefox == '1'
     steps:
-      - uses: actions/checkout@v4
-      - run: npm install
-      - run: npm run build
-      - run: make zipstore
-      - name: Upload & release to chrome store
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.inputs.branch || 'master' }}
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '16'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm install
+        
+      - name: Build extension
+        run: npm run build
+        
+      - name: Create distribution packages
+        run: make zipstore
+      
+      - name: Save Chrome extension package as artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: chrome-extension
+          path: dist/chrome.zip
+          retention-days: 7
+          
+      - name: Upload & release to Chrome Web Store
         uses: mnao305/chrome-extension-upload@v4.0.1
         if: github.event.inputs.chrome == '1'
         with:
@@ -31,3 +59,25 @@ jobs:
           client-id: ${{ secrets.GOOGLE_CLIENT_ID }}
           client-secret: ${{ secrets.GOOGLE_CLIENT_SECRET }}
           refresh-token: ${{ secrets.GOOGLE_REFRESH_TOKEN }}
+        continue-on-error: false
+      
+      - name: Upload & release to Firefox Add-ons Store
+        uses: trmcnvn/firefox-addon@v1
+        if: github.event.inputs.firefox == '1'
+        with:
+          uuid: '{your-firefox-extension-uuid}'
+          xpi: dist/firefox.zip
+          manifest: src/assets/manifest.firefox.json
+          api-key: ${{ secrets.FIREFOX_API_KEY }}
+          api-secret: ${{ secrets.FIREFOX_API_SECRET }}
+        continue-on-error: false
+      
+      - name: Send notification on success
+        if: success()
+        uses: rtCamp/action-slack-notify@v2
+        env:
+          SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
+          SLACK_TITLE: "Extension Published Successfully"
+          SLACK_MESSAGE: "The extension has been published to the stores."
+          SLACK_COLOR: good
+        continue-on-error: true
